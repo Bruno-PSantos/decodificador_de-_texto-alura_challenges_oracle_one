@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge - Decodificador de Texto</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="logo">
+    </div>
+<!--  -->
+    <main class="encrypt">
+        <textarea class="encrypt__input" placeholder="Digite seu texto" name="text-to-encrypt-or-decrypt" id="encrypt__input" cols="" rows="" onkeydown="autoResizeTextarea()"></textarea>
+
+        <div class="encrypt__bottom">
+            <p class="encrypt__bottom__text">
+                <img src="./assets/circulo-exclamacao.svg" alt="Circulo com uma exclamação">
+                Apenas letras minúsculas e sem acento.
+            </p>
+
+            <div class="encrypt__bottom__buttons">
+                <button class="encrypt__bottom__buttons__encrypt" onclick="encryptMessage()">Criptografar</button>
+                <button class="encrypt__bottom__buttons__decrypt" onclick="decryptMessage()">Descriptografar</button>
+            </div>
+        </div>
+    </main>
+<!--  -->
+    <section class="message" id="message">
+        <div id="message__encrypted-or-decrypted"></div>
+        <div class="message__division" id="message__division">
+            <img class="message__division__image" src="./assets/boneco-lupa-diamante.svg" alt="Boneco com uma lupa, olhando um diamante">
+
+            <div class="message__division__texts">
+                <h2 class="message__division__texts__title">Nenhuma mensagem encontrada</h2>
+                <p class="message__division__texts__text">Digite um texto que você deseja criptografar ou descriptografar.</p>
+            </div>
+        </div>
+
+        <button id="message__button-copy" onclick="copyText()">Copiar</button>
+    </section>
+<!--  -->
+    <script src="script.js"></script>
+
+</body>
+</html>

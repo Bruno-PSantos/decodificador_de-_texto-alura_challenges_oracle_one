@@ -1,0 +1,249 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue-100: #609ED4;
+    --dark-blue-200: #356EA9;
+    --dark-blue-300: #0A3871;
+    --dark-blue-400: #072B61;
+    --dark-blue-500: #052051;
+
+    --gray-100: #CED4DA;
+    --gray-200: #ADB5BD;
+    --gray-300: #868E96;
+    --gray-400: #495057;
+    --gray-500: #343A40;
+
+    --light-blue-100: #F3F5FC;
+    --light-blue-200: #EFF1FA;
+    --light-blue-300: #E9ECF8;
+    --light-blue-400: #AAB2D5;
+    --light-blue-500: #757FB2;
+
+    --font-inter: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--light-blue-100);
+    display: flex;
+    gap: 80px;
+    padding: 40px;
+    font-family: var(--font-inter);
+}
+
+
+
+.logo {
+    width: 120px;
+    height: 48px;
+    background-image: url(./assets/logo-pc-notebook.svg);
+}
+
+
+
+.encrypt {
+    width: 680px;
+    padding-top: 108px;
+}
+
+.encrypt__input {
+    height: 50vh;
+    width: 100%;
+    font-size: 2rem;
+    resize: none;
+    overflow: hidden;
+    background-color: transparent;
+    border: none;
+}
+
+.encrypt__input,
+.encrypt__input::placeholder {
+    color: var(--dark-blue-300);
+}
+
+.encrypt__input:focus {
+    outline: none;
+}
+
+.encrypt__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.encrypt__bottom__text {
+    display: flex;
+    gap: 8px;
+    color: var(--gray-400);
+    font-size: 0.75rem;
+}
+
+.encrypt__bottom__buttons {
+    display: flex;
+    gap: 24px;
+}
+
+.encrypt__bottom__buttons__encrypt {
+    color: #FFF;
+    background-color: var(--dark-blue-300);
+    border: 1px solid var(--dark-blue-300);
+}
+
+.encrypt__bottom__buttons__decrypt {
+    color: var(--dark-blue-300);
+    background-color: transparent;
+    border: 1px solid var(--dark-blue-300);
+}
+
+.encrypt__bottom__buttons__encrypt,
+.encrypt__bottom__buttons__decrypt {
+    font-size: 1rem;
+    padding: 24px 0;
+    width: 50%;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.encrypt__bottom__buttons__encrypt:hover {
+    background-color: var(--dark-blue-400);
+}
+
+.encrypt__bottom__buttons__decrypt:hover {
+    background-color: #D8DFE8;
+}
+
+
+.message {
+    width: 400px;
+    height: 85vh;
+    background-color: #FFF;
+    padding: 32px;
+    border-radius: 32px;
+    box-shadow: 0 24px 32px -8px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    word-wrap: break-word;
+    gap: 32px;
+}
+
+.message__division__texts {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    padding: 0 35px;
+}
+
+.message__division__texts__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gray-500);
+}
+
+.message__division__texts__text {
+    font-size: 1rem;
+    color: var(--gray-400);
+}
+
+#message__button-copy {
+    font-size: 1rem;
+    padding: 24px 0;
+    width: 100%;
+    border-radius: 24px;
+    color: var(--dark-blue-300);
+    background-color: transparent;
+    border: 1px solid var(--dark-blue-300);
+    cursor: pointer;
+    display: none;
+}
+
+#message__button-copy:hover {
+    background-color: #D8DFE8;
+}
+
+#message__encrypted-or-decrypted {
+    font-size: 1.5rem;
+    color: var(--gray-400);
+    width: 336px;
+    display: none;
+}
+
+
+@media (max-width: 1200px) {
+    body {
+        padding: 32px;
+        gap: 20px;
+    }
+
+    .logo {
+        width: 32px;
+        background-image: url(./assets/logo-tablet-celular.svg);
+    }
+
+    .encrypt {
+        width: 600px;
+    }
+
+    .message {
+        width: 320px;
+    }
+
+    .message__division__image,
+    #message__encrypted-or-decrypted {
+        width: 256px;
+    }
+
+    .message__division__texts {
+        padding: 0px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .logo {
+        width: 32px;
+        background-image: url(./assets/logo-tablet-celular.svg);
+    }
+
+    .encrypt {
+        padding-top: 68px;
+        width: 100%;
+    }
+
+    .message {
+        width: auto;
+        height: auto;
+        padding: 32px;
+        gap: 32px;
+    }
+
+    #message__encrypted-or-decrypted {
+        width: auto;
+    }
+
+    .message__division__image {
+        display: none;
+    }
+}
+
+@media (max-width: 425px) {
+    .encrypt,
+    .encrypt__input,
+    .encrypt__bottom__buttons__encrypt,
+    .encrypt__bottom__buttons__decrypt {
+        width: 100%;
+    }
+
+    .encrypt__bottom__buttons {
+        flex-direction: column;
+    }
+}
