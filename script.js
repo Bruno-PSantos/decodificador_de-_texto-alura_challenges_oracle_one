@@ -14,7 +14,7 @@ let copyMessage;
 
 textArea.addEventListener('input', function(event) {
     let inputText = event.target.value;
-    event.target.value = inputText.replace(/[^a-z0-9]/g, '');
+    event.target.value = inputText.replace(/[^a-z0-9\s]/g, '');
 });
 
 
