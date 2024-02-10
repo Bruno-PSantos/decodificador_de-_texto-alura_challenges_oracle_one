@@ -1,23 +1,37 @@
-let encryptBtn = document.getElementsByClassName("encrypt__bottom__buttons__encrypt");
-let decryptBtn = document.getElementsByClassName("encrypt__bottom__buttons__decrypt");
 let copyBtn = document.getElementById("message__button-copy");
 
 let showEncryptOrDecryptText = document.getElementById("message__encrypted-or-decrypted");
 let DivMessageWithImage = document.getElementById("message__division");
 let messageDiv = document.getElementById("message");
+let infoDiv = document.getElementById("information");
+let divCopyMessageConfirm = document.getElementById("copy-message-confirm");
+let textArea = document.getElementById("encrypt__input");
 
 let textAreaValue;
 let newMessage;
-let newSplitMessage = [];
 let copyMessage;
 
 
+textArea.addEventListener('input', function(event) {
+    let inputText = event.target.value;
+    event.target.value = inputText.replace(/[^a-z0-9]/g, '');
+});
+
+
+function closeInfo() {
+    infoDiv.style.display = 'none';
+}
+
+
 function autoResizeTextarea() {
-    let textArea = document.getElementById("encrypt__input");
-    
     while (textArea.scrollHeight > textArea.offsetHeight) {
         textArea.rows += 1;
     }
+}
+
+
+function hideMessageCopy() {
+    divCopyMessageConfirm.style.display = 'none';
 }
 
 
@@ -25,44 +39,43 @@ async function copyText() {
     copyMessage = showEncryptOrDecryptText.innerText;
 
     await navigator.clipboard.writeText(copyMessage);
+
+    divCopyMessageConfirm.style.display = 'block';
+
+    setTimeout(hideMessageCopy, 1400);
 }
 
 
-function encryptMessage() {
-    textAreaValue = document.getElementById("encrypt__input").value;
-    let splitMessage = textAreaValue.split("");
-
-    for (let i = 0; i < splitMessage.length; i++) {
-        switch(splitMessage[i]) {
-            case "e":
-                newSplitMessage[i] = 'enter';
-                break;
-            case "i":
-                newSplitMessage[i] = 'imes';
-                break;
-            case "a":
-                newSplitMessage[i] = 'ai';
-                break;
-            case "o":
-                newSplitMessage[i] = 'ober';
-                break;
-            case "u":
-                newSplitMessage[i] = 'ufat';
-                break;
-            default:
-                newSplitMessage[i] = splitMessage[i]
-                break;
-        }
-    }
-
+function hideSomeElements() {
     DivMessageWithImage.style.display = 'none';
     showEncryptOrDecryptText.style.display = 'block';
     messageDiv.style.justifyContent = 'space-between';
     messageDiv.style.height = 'auto';
     copyBtn.style.display = 'block';
 
-    newMessage = newSplitMessage.join("");
+    showEncryptOrDecryptText.innerHTML = '';
     showEncryptOrDecryptText.innerHTML = newMessage;
+}
+
+
+function encryptMessage() {
+    textAreaValue = document.getElementById("encrypt__input").value;
+
+    const encryptMsg = {
+        "e": 'enter',
+        "i": 'imes',
+        "a": 'ai',
+        "o": 'ober',
+        "u": 'ufat'
+    };
+
+    newMessage = "";
+    
+    for (let char of textAreaValue) {
+        newMessage += encryptMsg[char] || char;
+    }
+
+    hideSomeElements();
 }
 
 
@@ -75,11 +88,5 @@ function decryptMessage() {
     newMessage = newMessage.replace(/ober/g, "o");
     newMessage = newMessage.replace(/ufat/g, "u");
 
-    DivMessageWithImage.style.display = 'none';
-    showEncryptOrDecryptText.style.display = 'block';
-    messageDiv.style.justifyContent = 'space-between';
-    messageDiv.style.height = 'auto';
-    copyBtn.style.display = 'block';
-
-    showEncryptOrDecryptText.innerHTML = newMessage;
+    hideSomeElements();
 }

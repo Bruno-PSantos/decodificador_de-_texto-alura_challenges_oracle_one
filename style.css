@@ -29,11 +29,72 @@
 }
 
 body {
+    font-family: var(--font-inter);
+    position: relative;
+}
+
+
+
+.container {
     background-color: var(--light-blue-100);
     display: flex;
     gap: 80px;
     padding: 40px;
-    font-family: var(--font-inter);
+}
+
+
+
+#information {
+    position: absolute;
+    width: 100%;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.information__sec {
+    background-color: #FFF;
+    width: 400px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+    border-radius: 32px;
+    box-shadow: 0 24px 32px -8px rgba(0, 0, 0, 0.08);
+}
+
+.information__sec__button {
+    width: 300px;
+}
+
+.information__sec__list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: var(--gray-400);
+    font-size: 1rem;
+    list-style: none;
+    text-align: center;
+}
+
+
+
+#copy-message-confirm {
+    background-color: #FFF;
+    text-align: center;
+    color: var(--dark-blue-400);
+    border-radius: 8px;
+    width: 150px;
+    padding: 8px 0px;
+    box-shadow: 3px 15px 12px -8px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    margin-left: -75px;
+    display: none;
 }
 
 
@@ -88,7 +149,8 @@ body {
     gap: 24px;
 }
 
-.encrypt__bottom__buttons__encrypt {
+.encrypt__bottom__buttons__encrypt,
+.information__sec__button {
     color: #FFF;
     background-color: var(--dark-blue-300);
     border: 1px solid var(--dark-blue-300);
@@ -101,7 +163,8 @@ body {
 }
 
 .encrypt__bottom__buttons__encrypt,
-.encrypt__bottom__buttons__decrypt {
+.encrypt__bottom__buttons__decrypt,
+.information__sec__button {
     font-size: 1rem;
     padding: 24px 0;
     width: 50%;
@@ -109,7 +172,8 @@ body {
     cursor: pointer;
 }
 
-.encrypt__bottom__buttons__encrypt:hover {
+.encrypt__bottom__buttons__encrypt:hover,
+.information__sec__button:hover {
     background-color: var(--dark-blue-400);
 }
 
@@ -140,7 +204,8 @@ body {
     padding: 0 35px;
 }
 
-.message__division__texts__title {
+.message__division__texts__title,
+.information__sec__title {
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--gray-500);
@@ -176,7 +241,7 @@ body {
 
 
 @media (max-width: 1200px) {
-    body {
+    .container {
         padding: 32px;
         gap: 20px;
     }
@@ -205,7 +270,12 @@ body {
 }
 
 @media (max-width: 768px) {
-    body {
+    #information {
+        padding-bottom: 180px;
+        height: 100%;
+    }
+
+    .container {
         flex-direction: column;
     }
 
@@ -236,6 +306,15 @@ body {
 }
 
 @media (max-width: 425px) {
+    #information {
+        padding-bottom: 300px;
+    }
+
+    .information__sec {
+        width: 350px;
+        padding: 32px;
+    }
+
     .encrypt,
     .encrypt__input,
     .encrypt__bottom__buttons__encrypt,
